@@ -1,0 +1,44 @@
+.App-header {
+  background-color: #282c34;
+  min-height: 5vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.App-section {
+  display: grid;
+  grid-template-columns: 80% 20%;
+
+  background-color: #fff;
+  min-height: 90vh;
+  width: 100%;
+  color: black;
+}
+.App-footer {
+  background-color: #282c34;
+  min-height: 5vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(1px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.calendar-container {
+  position: relative;
+  display: block;
+}
+.setting-container {
+  position: relative;
+  display: block;
+}
