@@ -33,12 +33,3 @@
 .App-link {
   color: #61dafb;
 }
-
-.calendar-container {
-  position: relative;
-  display: block;
-}
-.setting-container {
-  position: relative;
-  display: block;
-}
