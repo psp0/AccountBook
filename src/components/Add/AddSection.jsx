@@ -34,7 +34,7 @@ function AddSection() {
             <button
               value={e}
               onClick={(event) => {
-                setMoney(money + parseFloat(event.currentTarget.value));
+                setMoney(money + parseFloat(event.target.value));
               }}
             >
               {e}
@@ -49,7 +49,13 @@ function AddSection() {
           value={money}
           onChange={(event) => setMoney(parseFloat(event.target.value))}
         />
-        <button>초기화</button>
+        <button
+          onClick={(event) => {
+            setMoney(0);
+          }}
+        >
+          초기화
+        </button>
       </div>
       <div>
         내용:
