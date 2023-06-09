@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./AddSection.css";
+import ToggleButton from "./InputOuputToggle/IOToggle";
 // import styled from "styled-components";
 
 // const TodoHeadBlock = styled.div`
@@ -23,10 +24,7 @@ function AddSection() {
   return (
     <div className="setting-container">
       <div className="choose-IO">
-        수입
-        <input type="checkbox" className="Input" />
-        지출
-        <input type="checkbox" className="Output" defaultValue={"checked"} />
+        <ToggleButton />
       </div>
       <div className="money-buttons">
         {[500, 1000, 5000, 10000].map((e) => {
