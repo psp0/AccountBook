@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
-import "./AddSection.css";
+import "./AddContainer.css";
 import ToggleButton from "./ExpendIncomeToggle/ToggleButton";
-import DateChange from "./DateChange/DateChange";
+import DateChanger from "./DateChanger/DateChanger";
 
-function AddSection() {
+function AddContainer() {
   const [money, setMoney] = useState(0);
 
   useEffect(() => {}, [money]);
 
   return (
-    <div className="setting-container">
-      <div className="choose-IO">
-        <ToggleButton />
-      </div>
-      <DateChange />
+    <div className="add-container">
+      <ToggleButton />
+      <DateChanger />
       <div className="money-buttons">
         {[500, 1000, 5000, 10000].map((e) => {
           return (
@@ -53,4 +51,4 @@ function AddSection() {
   );
 }
 
-export default AddSection;
+export default AddContainer;

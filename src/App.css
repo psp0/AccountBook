@@ -1,3 +1,16 @@
+#wrap {
+  margin: 0 auto;
+  padding: 5vh;
+  background-color: #f2f2f2;
+}
+.App {
+  border: 1px solid black;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.basic-font {
+  font-size: calc(10px + vmin);
+}
 .App-header {
   background-color: #282c34;
   min-height: 5vh;
@@ -9,14 +22,14 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-.App-section {
+.App-container {
   display: grid;
   grid-template-columns: 80% 20%;
-
   background-color: #fff;
-  min-height: 90vh;
+  min-height: 80vh;
   width: 100%;
   color: black;
+  box-shadow: 0 50px 100px rgba(0, 0, 0, 0.3);
 }
 .App-footer {
   background-color: #282c34;

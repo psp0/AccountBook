@@ -1,6 +1,6 @@
 import React from "react";
-
-function ViewSection() {
+import "./ViewContainer.css";
+function ViewContainer() {
   return (
     <div className="calendar-container">
       <div>달력위치</div>
@@ -8,4 +8,4 @@ function ViewSection() {
   );
 }
 
-export default ViewSection;
+export default ViewContainer;

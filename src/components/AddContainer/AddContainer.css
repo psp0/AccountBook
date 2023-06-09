@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
 }
-.setting-container {
+.add-container {
   position: relative;
   display: flex;
   flex-direction: column;
