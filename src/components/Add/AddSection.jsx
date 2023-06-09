@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./AddSection.css";
 import ToggleButton from "./InputOuputToggle/IOToggle";
+
+import DateChange from "./DateChange/DateChange";
 // import styled from "styled-components";
 
 // const TodoHeadBlock = styled.div`
@@ -19,6 +21,7 @@ import ToggleButton from "./InputOuputToggle/IOToggle";
 
 function AddSection() {
   const [money, setMoney] = useState(0);
+
   useEffect(() => {}, [money]);
 
   return (
@@ -26,6 +29,7 @@ function AddSection() {
       <div className="choose-IO">
         <ToggleButton />
       </div>
+      <DateChange />
       <div className="money-buttons">
         {[500, 1000, 5000, 10000].map((e) => {
           return (
@@ -59,6 +63,7 @@ function AddSection() {
         내용:
         <input type="text" />
       </div>
+
       <button>가계부에 등록</button>
     </div>
   );
