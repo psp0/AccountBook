@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
 const ToggleButton = () => {
-  const [isOn, setIsOn] = useState(false);
+  const [isMinus, setIsMinus] = useState(true);
 
   const handleToggle = () => {
-    setIsOn(!isOn);
+    setIsMinus(!isMinus);
   };
 
   return (
     <div>
-      <button onClick={handleToggle}>{isOn ? "-지출" : "+수입"}</button>
+      <button onClick={handleToggle}>{isMinus ? "-지출" : "+수입"}</button>
     </div>
   );
 };
