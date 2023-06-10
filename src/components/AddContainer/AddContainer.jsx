@@ -1,46 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./AddContainer.css";
 import ToggleButton from "./ExpendIncomeToggle/ToggleButton";
 import DateChanger from "./DateChanger/DateChanger";
 
 function AddContainer() {
-  const [money, setMoney] = useState(0);
-
-  useEffect(() => {}, [money]);
+  const [amount, setAmount] = useState(0);
 
   return (
     <div className="add-container">
-      <ToggleButton />
+      <ToggleButton amount={amount} setAmount={setAmount} />
       <DateChanger />
-      <div className="money-buttons">
-        {[500, 1000, 5000, 10000].map((e) => {
-          return (
+      <div className="add-amount-buttons">
+        {[500, 1000, 5000, 10000].map((e) => (
             <button
               key={e}
               value={e}
               onClick={(event) => {
-                setMoney(money + parseFloat(event.target.value));
+              setAmount(amount + parseFloat(event.target.value));
               }}
             >
               {e}
             </button>
-          );
-        })}
+        ))}
       </div>
-      <div className="money-input">
+      <div className="amount-input">
         금액:
         <input
           type="text"
-          value={money}
-          onChange={(event) => setMoney(parseFloat(event.target.value))}
+          value={amount}
+          onChange={(event) => setAmount(parseFloat(event.target.value))}
         />
-        <button
-          onClick={(event) => {
-            setMoney(0);
-          }}
-        >
-          초기화
-        </button>
+        <button onClick={() => setAmount(0)}>초기화</button>
       </div>
       <div>
         내용:
