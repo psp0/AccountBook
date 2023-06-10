@@ -16,6 +16,7 @@ function AddContainer() {
         {[500, 1000, 5000, 10000].map((e) => {
           return (
             <button
+              key={e}
               value={e}
               onClick={(event) => {
                 setMoney(money + parseFloat(event.target.value));
