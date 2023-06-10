@@ -1,15 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 
-const ToggleButton = () => {
-  const [isMinus, setIsMinus] = useState(true);
-
+const ToggleButton = ({ isExpend, setIsExpend, amount, setAmount }) => {
   const handleToggle = () => {
-    setIsMinus(!isMinus);
+    if (isExpend) {
+      //->+
+      if (amount < 0) {
+        setAmount(amount * -1);
+      }
+    } else {
+      //+->-
+      if (amount > 0) {
+        setAmount(amount * -1);
+      }
+    }
+    setIsExpend(!isExpend);
   };
 
   return (
     <div>
-      <button onClick={handleToggle}>{isMinus ? "-지출" : "+수입"}</button>
+      <button onClick={handleToggle}>{isExpend ? "-지출" : "+수입"}</button>
     </div>
   );
 };
