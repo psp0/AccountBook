@@ -1,8 +1,7 @@
 import React from "react";
 import { dateToString } from "../../Module/DateToString";
 import "./DateChanger.css";
-function DateChanger() {
-  const today = new Date();
+function DateChanger({ date, setDate }) {
   return (
     <div className="date-changer">
       날짜 변경 (기본값은 오늘)
@@ -10,7 +9,10 @@ function DateChanger() {
         type="date"
         name=""
         id="date-changer-input-btn"
-        defaultValue={dateToString(today)}
+        defaultValue={date}
+        onChange={(event) => {
+          setDate(dateToString(new Date(event.target.value)));
+        }}
       />
     </div>
   );
