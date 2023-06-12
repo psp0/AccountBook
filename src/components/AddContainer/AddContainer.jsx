@@ -24,8 +24,16 @@ function AddContainer() {
         setIsExpend={setIsExpenditure}
         amount={amount}
         setAmount={setAmount}
+      /> */}
+      <div>
+        날짜 변경:
+        <DatePicker
+          defaultValue={dayjs(date, "YYYY-MM-DD")}
+          onChange={(date, dateString) => {
+            setDate(dateString);
+          }}
       />
-      <DateChanger date={date} setDate={setDate} />
+      </div>
       <div className="add-amount-buttons">
         {[500, 1000, 5000, 10000].map((e) => (
           <button
@@ -87,7 +95,7 @@ function AddContainer() {
             alert("내용을 입력해주십시오");
           } else {
             let obj = {
-              type: isExpend ? "Expenditure" : "Income",
+              type: isExpenditure ? "Expenditure" : "Income",
               date: date,
               amount: amount,
               content: content,
