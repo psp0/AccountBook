@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./AddContainer.css";
-import ToggleButton from "./ExpendIncomeToggle/ToggleButton";
-import DateChanger from "./DateChanger/DateChanger";
-import { dateToString } from "../Module/DateToString";
 
+import SwitchButton from "./SwitchButton/SwitchButton";
+import { dateToString } from "../Module/DateToString";
+import { DatePicker } from "antd";
+import dayjs from "dayjs";
 function AddContainer() {
   const [isExpenditure, setIsExpenditure] = useState(true);
   const [amount, setAmount] = useState(0);
@@ -13,18 +14,18 @@ function AddContainer() {
   useEffect(() => {
     if (amount > 0) {
       setIsExpenditure(false);
-    } else {
+    } else if (amount < 0) {
       setIsExpenditure(true);
     }
   }, [amount]);
   return (
     <div className="add-container">
-      <ToggleButton
-        isExpend={isExpenditure}
-        setIsExpend={setIsExpenditure}
+      <SwitchButton
+        isExpenditure={isExpenditure}
+        setIsExpenditure={setIsExpenditure}
         amount={amount}
         setAmount={setAmount}
-      /> */}
+      />
       <div>
         날짜 변경:
         <DatePicker
@@ -56,24 +57,28 @@ function AddContainer() {
         <input
           type="text"
           value={amount}
+          onInput={(e) =>
+            (e.target.value = e.target.value.replace(/[^0-9|-]/g, ""))
+          }
           onChange={(event) => {
-            debugger;
-            if (event.target.value.lastIndexOf("-") > 0) {
-              //typing "-"
+            let typeOnlyNumber =
+              event.target.value.indexOf("*") === -1 &&
+              event.target.value.indexOf("+") === -1 &&
+              event.target.value.indexOf("/") === -1 &&
+              event.target.value.indexOf("=") === -1 &&
+              !isNaN(parseFloat(event.target.value));
+            let typingMinusAtMiddle = event.target.value.lastIndexOf("-") > 0;
+            let startTyping = amount === 0;
+            if (typeOnlyNumber) {
+              if (typingMinusAtMiddle) {
               setAmount(amount * -1);
-            } else if (isNaN(parseFloat(event.target.value))) {
-              setAmount(0);
-            } else if (amount === 0) {
-              //first typing
+              } else if (startTyping && isExpenditure) {
               setAmount(parseFloat(event.target.value) * -1);
+              } else if (startTyping && !isExpenditure) {
+                setAmount(parseFloat(event.target.value));
             } else {
               setAmount(parseFloat(event.target.value));
             }
-
-            if (parseFloat(event.target.value) > 0 && amount !== 0) {
-              setIsExpenditure(false);
-            } else {
-              setIsExpenditure(true);
             }
           }}
         />

@@ -1,0 +1,17 @@
+:where(
+    .css-dev-only-do-not-override-12jzuas
+  ).ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) {
+  background: rgba(255, 37, 37, 0.5);
+}
+:where(.css-dev-only-do-not-override-12jzuas).ant-switch.ant-switch-checked {
+  background: rgba(255, 37, 37, 0.65);
+}
+:where(.css-dev-only-do-not-override-12jzuas).ant-switch:hover:not(
+    .ant-switch-disabled
+  ) {
+  background: rgba(0, 89, 255, 0.35);
+}
+
+:where(.css-dev-only-do-not-override-12jzuas).ant-switch {
+  background: rgba(0, 89, 255, 0.45);
+}
