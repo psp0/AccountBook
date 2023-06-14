@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./AddContainer.css";
-
 import SwitchButton from "./SwitchButton/SwitchButton";
 import { dateToString } from "../Module/DateToString";
 import { DatePicker } from "antd";
@@ -33,7 +32,7 @@ function AddContainer() {
           onChange={(date, dateString) => {
             setDate(dateString);
           }}
-      />
+        />
       </div>
       <div className="add-amount-buttons">
         {[500, 1000, 5000, 10000].map((e) => (
@@ -61,24 +60,19 @@ function AddContainer() {
             (e.target.value = e.target.value.replace(/[^0-9|-]/g, ""))
           }
           onChange={(event) => {
-            let typeOnlyNumber =
-              event.target.value.indexOf("*") === -1 &&
-              event.target.value.indexOf("+") === -1 &&
-              event.target.value.indexOf("/") === -1 &&
-              event.target.value.indexOf("=") === -1 &&
-              !isNaN(parseFloat(event.target.value));
+            let typeOnlyNumber = !isNaN(parseFloat(event.target.value));
             let typingMinusAtMiddle = event.target.value.lastIndexOf("-") > 0;
             let startTyping = amount === 0;
             if (typeOnlyNumber) {
               if (typingMinusAtMiddle) {
-              setAmount(amount * -1);
+                setAmount(amount * -1);
               } else if (startTyping && isExpenditure) {
-              setAmount(parseFloat(event.target.value) * -1);
+                setAmount(parseFloat(event.target.value) * -1);
               } else if (startTyping && !isExpenditure) {
                 setAmount(parseFloat(event.target.value));
-            } else {
-              setAmount(parseFloat(event.target.value));
-            }
+              } else {
+                setAmount(parseFloat(event.target.value));
+              }
             }
           }}
         />
@@ -99,17 +93,24 @@ function AddContainer() {
           } else if (content === "") {
             alert("내용을 입력해주십시오");
           } else {
+            if (localStorage.getItem("data") === null) {
+              localStorage.setItem("data", "[]");
+            }
+            let arr = JSON.parse(localStorage.getItem("data"));
+            let todayCount = arr.filter((e) => e.date === date).length;
             let obj = {
               type: isExpenditure ? "Expenditure" : "Income",
               date: date,
+              order: todayCount,
               amount: amount,
               content: content,
+              deleted: false,
             };
-            localStorage.setItem(localStorage.length, JSON.stringify(obj));
+            arr.push(obj);
+            localStorage.setItem("data", JSON.stringify(arr));
             alert("등록완료!");
             setAmount(0);
             setContent("");
-            setDate(dateToString(new Date()));
           }
         }}
       >
