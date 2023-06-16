@@ -3,6 +3,7 @@ import "./AddContainer.css";
 import SwitchButton from "./SwitchButton/SwitchButton";
 import { dateToString } from "../Module/DateToString";
 import { DatePicker } from "antd";
+import locale from "antd/es/date-picker/locale/ko_KR";
 import dayjs from "dayjs";
 function AddContainer() {
   const [isExpenditure, setIsExpenditure] = useState(true);
@@ -28,6 +29,7 @@ function AddContainer() {
       <div>
         날짜 변경:
         <DatePicker
+          locale={locale}
           defaultValue={dayjs(date, "YYYY-MM-DD")}
           onChange={(date, dateString) => {
             setDate(dateString);
