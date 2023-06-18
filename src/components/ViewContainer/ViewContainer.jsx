@@ -1,6 +1,7 @@
 import React from "react";
 import { Calendar } from "antd";
 import locale from "antd/es/date-picker/locale/ko_KR";
+import "dayjs/locale/ko";
 import "./ViewContainer.css";
 const getListData = (value) => {
   let dateString = `${value.year()}-${String(value.month() + 1).padStart(
