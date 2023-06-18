@@ -2,3 +2,18 @@
   position: relative;
   display: block;
 }
+.ant-picker-date-panel .ant-picker-calendar-date-content {
+  font-size: 0.5rem;
+}
+.ant-picker-date-panel .ant-picker-calendar-date-content .Expenditure {
+  color: red;
+}
+.ant-picker-date-panel .ant-picker-calendar-date-content .Income {
+  color: #1677ff;
+}
+.ant-picker-month-panel .ant-picker-calendar-date-content .Expenditure {
+  color: rgba(255, 37, 37, 0.65);
+}
+.ant-picker-month-panel .ant-picker-calendar-date-content .Income {
+  color: rgba(0, 89, 255, 0.45);
+}

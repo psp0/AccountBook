@@ -7,7 +7,7 @@ const getListData = (value) => {
     2,
     "0"
   )}-${String(value.date()).padStart(2, "0")}`;
-  let arr = JSON.parse(localStorage.getItem("data")).filter(
+  let arr = (JSON.parse(localStorage.getItem("data")) || []).filter(
     (e) => e.date === dateString
   );
   return arr;
@@ -17,7 +17,7 @@ const getMonthData = (value) => {
     2,
     "0"
   )}-`;
-  let arr = JSON.parse(localStorage.getItem("data")).filter(
+  let arr = (JSON.parse(localStorage.getItem("data")) || []).filter(
     (e) => e.date.indexOf(dateString) !== -1
   );
   let sum = arr.reduce((total, value) => {
@@ -31,7 +31,9 @@ function ViewContainer() {
     const num = getMonthData(value);
     return num ? (
       <div className="notes-month">
-        <section>총 수입과 지출: {num}</section>
+        <div className={num > 0 ? "Income" : "Expenditure"}>
+          총 수입과 지출: {num}
+        </div>
       </div>
     ) : null;
   };
@@ -40,7 +42,9 @@ function ViewContainer() {
     return (
       <div className="">
         {listData.map((item) => (
-          <div key={item.date + item.order}>{item.amount}</div>
+          <div className={item.type} key={item.date + item.order}>
+            {item.amount > 0 ? "+" + item.amount : item.amount}[{item.content}]
+          </div>
         ))}
       </div>
     );

@@ -9,3 +9,9 @@
   align-items: center;
   justify-content: center;
 }
+.amount-input input.ex {
+  color: rgba(255, 37, 37, 0.65);
+}
+.amount-input input.in {
+  color: rgba(0, 89, 255, 0.65);
+}

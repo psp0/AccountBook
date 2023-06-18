@@ -58,6 +58,7 @@ function AddContainer() {
         <input
           type="text"
           value={amount}
+          className={isExpenditure ? "ex" : "in"}
           onInput={(e) =>
             (e.target.value = e.target.value.replace(/[^0-9|-]/g, ""))
           }
