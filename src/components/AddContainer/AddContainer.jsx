@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./AddContainer.css";
 import SwitchButton from "./SwitchButton/SwitchButton";
 import { dateToString } from "../Module/DateToString";
-import { DatePicker } from "antd";
+import { DatePicker, Space, Button, Input } from "antd";
 import locale from "antd/es/date-picker/locale/ko_KR";
 import dayjs from "dayjs";
 function AddContainer() {
@@ -27,7 +27,7 @@ function AddContainer() {
         setAmount={setAmount}
       />
       <div>
-        날짜 변경:
+        날짜:
         <DatePicker
           locale={locale}
           defaultValue={dayjs(date, "YYYY-MM-DD")}
@@ -38,7 +38,7 @@ function AddContainer() {
       </div>
       <div className="add-amount-buttons">
         {[500, 1000, 5000, 10000].map((e) => (
-          <button
+          <Button
             key={e}
             value={e}
             onClick={(event) => {
@@ -48,48 +48,55 @@ function AddContainer() {
                 setAmount(amount + parseFloat(event.target.value));
               }
             }}
+            size={"small"}
           >
             {e}
-          </button>
+          </Button>
         ))}
       </div>
       <div className="amount-input">
         금액:
-        <input
-          type="text"
-          value={amount}
-          className={isExpenditure ? "ex" : "in"}
-          onInput={(e) =>
-            (e.target.value = e.target.value.replace(/[^0-9|-]/g, ""))
-          }
-          onChange={(event) => {
-            let typeOnlyNumber = !isNaN(parseFloat(event.target.value));
-            let typingMinusAtMiddle = event.target.value.lastIndexOf("-") > 0;
-            let startTyping = amount === 0;
-            if (typeOnlyNumber) {
-              if (typingMinusAtMiddle) {
-                setAmount(amount * -1);
-              } else if (startTyping && isExpenditure) {
-                setAmount(parseFloat(event.target.value) * -1);
-              } else if (startTyping && !isExpenditure) {
-                setAmount(parseFloat(event.target.value));
-              } else {
-                setAmount(parseFloat(event.target.value));
-              }
+        <Space.Compact>
+          <Input
+            value={amount}
+            className={isExpenditure ? "ex" : "in"}
+            onInput={(e) =>
+              (e.target.value = e.target.value.replace(/[^0-9|-]/g, ""))
             }
-          }}
-        />
-        <button onClick={() => setAmount(0)}>초기화</button>
+            onChange={(event) => {
+              let typeOnlyNumber = !isNaN(parseFloat(event.target.value));
+              let typingMinusAtMiddle = event.target.value.lastIndexOf("-") > 0;
+              let startTyping = amount === 0;
+              if (typeOnlyNumber) {
+                if (typingMinusAtMiddle) {
+                  setAmount(amount * -1);
+                } else if (startTyping && isExpenditure) {
+                  setAmount(parseFloat(event.target.value) * -1);
+                } else if (startTyping && !isExpenditure) {
+                  setAmount(parseFloat(event.target.value));
+                } else {
+                  setAmount(parseFloat(event.target.value));
+                }
+              }
+            }}
+          />
+        </Space.Compact>
+        <Button type="primary" size="small" onClick={() => setAmount(0)}>
+          초기화
+        </Button>
       </div>
       <div>
         내용:
-        <input
-          type="text"
-          value={content}
-          onChange={(event) => setContent(event.target.value)}
-        />
+        <Space.Compact>
+          <Input
+            type="text"
+            value={content}
+            onChange={(event) => setContent(event.target.value)}
+          />
+        </Space.Compact>
       </div>
-      <button
+      <Button
+        type="primary"
         onClick={() => {
           if (amount === 0) {
             alert("금액을 입력해주십시오");
@@ -118,7 +125,7 @@ function AddContainer() {
         }}
       >
         가계부에 등록
-      </button>
+      </Button>
     </div>
   );
 }
