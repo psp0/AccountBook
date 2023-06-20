@@ -1,6 +1,7 @@
 .calendar-container {
   position: relative;
   display: block;
+  margin: 0 3vw 0 3vw;
 }
 .ant-picker-date-panel .ant-picker-calendar-date-content {
   font-size: 0.5rem;
@@ -16,4 +17,10 @@
 }
 .ant-picker-month-panel .ant-picker-calendar-date-content .Income {
   color: rgba(0, 89, 255, 0.45);
+}
+:where(
+    .css-dev-only-do-not-override-12jzuas
+  ).ant-picker-calendar.ant-picker-calendar-full
+  .ant-picker-calendar-date-content {
+  height: 6.2vh;
 }

@@ -1,12 +1,19 @@
 #wrap {
-  margin: 0 auto;
-  padding: 5vh;
+  /* margin: 0 auto; */
+  padding: 5vh 10vw 5vh 10vw;
   background-color: #f2f2f2;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .App {
   border: 1px solid black;
   border-radius: 20px;
   overflow: hidden;
+  height: 90vh;
+  width: 80vw;
 }
 .basic-font {
   font-size: calc(10px + vmin);
@@ -27,9 +34,9 @@
   grid-template-columns: 80% 20%;
   background-color: #fff;
   min-height: 80vh;
-  width: 100%;
+  width: 80vw;
   color: black;
-  box-shadow: 0 50px 100px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0 50px 100px rgba(0, 0, 0, 0.3); */
 }
 .App-footer {
   background-color: #282c34;
