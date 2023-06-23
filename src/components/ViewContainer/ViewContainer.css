@@ -18,9 +18,18 @@
 .ant-picker-month-panel .ant-picker-calendar-date-content .Income {
   color: rgba(0, 89, 255, 0.45);
 }
+
 :where(
     .css-dev-only-do-not-override-12jzuas
   ).ant-picker-calendar.ant-picker-calendar-full
+  .ant-picker-date-panel
   .ant-picker-calendar-date-content {
   height: 6.2vh;
+}
+:where(
+    .css-dev-only-do-not-override-12jzuas
+  ).ant-picker-calendar.ant-picker-calendar-full
+  .ant-picker-month-panel
+  .ant-picker-calendar-date-content {
+  height: 12vh;
 }
